@@ -10,7 +10,7 @@ namespace TodoApp.ConsoleApp
         {
             var user = new AppUser()
             {
-                FullName = "Roy Ramos",
+                FullName = "Roy Ramosu",
             };
              
             using (var context = new ToDoAppContext())
