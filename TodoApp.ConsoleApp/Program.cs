@@ -6,13 +6,13 @@ namespace TodoApp.ConsoleApp
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var user = new AppUser()
             {
                 FullName = "Roy Ramos",
             };
-
+             
             using (var context = new ToDoAppContext())
             {
                 context.Database.Log = Console.WriteLine;
