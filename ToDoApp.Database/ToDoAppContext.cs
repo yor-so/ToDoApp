@@ -5,8 +5,8 @@ namespace ToDoApp.Database
 {
     public class ToDoAppContext : DbContext
     {
-        DbSet<AppUser> AppUsers { get; set; }
-        DbSet<Task> Tasks { get; set; }
+        public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<Task> Tasks { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder) { 
             

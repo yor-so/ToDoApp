@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Business", "ToDoApp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Database", "ToDoApp.Database\ToDoApp.Database.csproj", "{75F4EBF2-9EAB-4899-9772-0A8BD5FF605B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApp.ConsoleApp", "TodoApp.ConsoleApp\TodoApp.ConsoleApp.csproj", "{598440F9-07A3-4B97-B598-F59A0FE88A48}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{75F4EBF2-9EAB-4899-9772-0A8BD5FF605B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75F4EBF2-9EAB-4899-9772-0A8BD5FF605B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75F4EBF2-9EAB-4899-9772-0A8BD5FF605B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{598440F9-07A3-4B97-B598-F59A0FE88A48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{598440F9-07A3-4B97-B598-F59A0FE88A48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{598440F9-07A3-4B97-B598-F59A0FE88A48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{598440F9-07A3-4B97-B598-F59A0FE88A48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

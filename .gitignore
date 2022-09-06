@@ -2,6 +2,8 @@
 packages/
 ToDoApp.Business/bin/
 ToDoApp.Business/obj/
+ToDoApp.ConsoleApp/bin/
+ToDoApp.ConsoleApp/obj/
 TodoApp.Database/bin/
 ToDoApp.Database/obj/
 ToDoApp.Web/bin/
