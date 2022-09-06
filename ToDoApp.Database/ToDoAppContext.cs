@@ -1,5 +1,5 @@
 ﻿using System.Data.Entity;
-using ToDoApp.Business.Models;
+using ToDoApp.Database.DTOs;
 
 namespace ToDoApp.Database
 {
@@ -7,5 +7,9 @@ namespace ToDoApp.Database
     {
         DbSet<AppUser> AppUsers { get; set; }
         DbSet<Task> Tasks { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder) { 
+            
+        }
     }
 }
