@@ -1,0 +1,10 @@
+.vs/
+packages/
+ToDoApp.Business/bin/
+ToDoApp.Business/obj/
+TodoApp.Database/bin/
+ToDoApp.Database/obj/
+ToDoApp.Web/bin/
+ToDoApp.Web/obj/
+ToDoApp.Web.Tests/bin/
+ToDoApp.Web.Tests/obj/
