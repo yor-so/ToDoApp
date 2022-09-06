@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ToDoApp.Business.Models
+﻿namespace ToDoApp.Business.Models
 {
     public class Task
     {
@@ -16,6 +10,8 @@ namespace ToDoApp.Business.Models
 
         public int EstimatedHours { get; set; }
 
-        public int UserId { get; set; }
+        public AppUser AppUser { get; set; }
+
+        public int AppUserId { get; set; }
     }
 }
