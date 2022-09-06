@@ -9,10 +9,10 @@ namespace TodoApp.ConsoleApp
         {
             var user = new AppUser()
             {
-                FullName = "Roy Ramos",
+                FullName = "Roy Ramosu",
             };
              
-            using (var context = new ToDoDatabaseConnection())
+            using (var context = new ToDoAppContext())
             {
                 context.Database.Log = Console.WriteLine;
                 context.AppUsers.Add(user);

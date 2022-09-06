@@ -13,10 +13,10 @@ namespace ToDoApp.Database
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ToDoDatabaseConnection : DbContext
+    public partial class ToDoAppContext : DbContext
     {
-        public ToDoDatabaseConnection()
-            : base("name=ToDoDatabaseConnection")
+        public ToDoAppContext()
+            : base("name=ToDoAppContext")
         {
         }
     

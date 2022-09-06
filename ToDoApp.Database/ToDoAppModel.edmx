@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ToDoAppContext.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ToDoAppDatabase.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AppUsers">
           <Key>
             <PropertyRef Name="Id" />
@@ -36,7 +36,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ToDoAppContextStoreContainer">
+        <EntityContainer Name="ToDoAppDatabaseStoreContainer">
           <EntitySet Name="AppUsers" EntityType="Self.AppUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tasks" EntityType="Self.Tasks" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_dbo_Tasks_dbo_AppUsers_AppUserId" Association="Self.FK_dbo_Tasks_dbo_AppUsers_AppUserId">
@@ -48,7 +48,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ToDoAppContext" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="ToDoAppDatabase" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="AppUser">
           <Key>
             <PropertyRef Name="Id" />
@@ -82,7 +82,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ToDoDatabaseConnection" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ToDoAppContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AppUsers" EntityType="Self.AppUser" />
           <EntitySet Name="Tasks" EntityType="Self.Task" />
           <AssociationSet Name="FK_dbo_Tasks_dbo_AppUsers_AppUserId" Association="Self.FK_dbo_Tasks_dbo_AppUsers_AppUserId">
@@ -95,9 +95,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ToDoAppContextStoreContainer" CdmEntityContainer="ToDoDatabaseConnection">
+        <EntityContainerMapping StorageEntityContainer="ToDoAppDatabaseStoreContainer" CdmEntityContainer="ToDoAppContext">
           <EntitySetMapping Name="AppUsers">
-            <EntityTypeMapping TypeName="ToDoAppContext.AppUser">
+            <EntityTypeMapping TypeName="ToDoAppDatabase.AppUser">
               <MappingFragment StoreEntitySet="AppUsers">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
@@ -105,7 +105,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tasks">
-            <EntityTypeMapping TypeName="ToDoAppContext.Task">
+            <EntityTypeMapping TypeName="ToDoAppDatabase.Task">
               <MappingFragment StoreEntitySet="Tasks">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />

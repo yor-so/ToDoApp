@@ -6,6 +6,8 @@ ToDoApp.ConsoleApp/bin/
 ToDoApp.ConsoleApp/obj/
 TodoApp.Database/bin/
 ToDoApp.Database/obj/
+ToDoApp.Repository/bin/
+ToDoApp.Repository/obj/
 ToDoApp.Web/bin/
 ToDoApp.Web/obj/
 ToDoApp.Web.Tests/bin/
