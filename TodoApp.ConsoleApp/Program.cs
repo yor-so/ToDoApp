@@ -1,6 +1,5 @@
 ﻿using System;
 using ToDoApp.Database;
-using ToDoApp.Database.DTOs;
 
 namespace TodoApp.ConsoleApp
 {
@@ -10,10 +9,10 @@ namespace TodoApp.ConsoleApp
         {
             var user = new AppUser()
             {
-                FullName = "Roy Ramosu",
+                FullName = "Roy Ramos",
             };
              
-            using (var context = new ToDoAppContext())
+            using (var context = new ToDoDatabaseConnection())
             {
                 context.Database.Log = Console.WriteLine;
                 context.AppUsers.Add(user);
