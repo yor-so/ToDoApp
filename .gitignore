@@ -8,6 +8,8 @@ TodoApp.Database/bin/
 ToDoApp.Database/obj/
 ToDoApp.Repository/bin/
 ToDoApp.Repository/obj/
+ToDoApp.Services/bin/
+ToDoApp.Services/obj/
 ToDoApp.Web/bin/
 ToDoApp.Web/obj/
 ToDoApp.Web.Tests/bin/
