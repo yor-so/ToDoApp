@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ToDoApp.Business.Models;
 using ToDoApp.Repository.Interfaces;
-using ToDoApp.Services.Models.Interfaces;
 using ToDoApp.Services.Services.Interfaces;
 
 namespace ToDoApp.Services.Services
@@ -18,22 +15,22 @@ namespace ToDoApp.Services.Services
             _taskRepository = taskRepository;
         }
 
-        public void CreateTask(ITaskModel taskModel)
+        public void CreateTask(TaskDto taskModel)
         {
             
         }
 
-        public void UpdateTask(ITaskModel taskModel)
+        public void UpdateTask(TaskDto taskModel)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<ITaskModel> GetAllTasks()
+        public IEnumerable<TaskDto> GetAllTasks()
         {
             throw new NotImplementedException();
         }
 
-        public ITaskModel GetTask(int id)
+        public TaskDto GetTask(int id)
         {
             throw new NotImplementedException();
         }

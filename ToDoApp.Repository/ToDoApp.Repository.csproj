@@ -40,6 +40,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Mapster, Version=7.3.0.0, Culture=neutral, PublicKeyToken=2f39883af23c29a8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mapster.7.3.0\lib\netstandard2.0\Mapster.dll</HintPath>
+    </Reference>
+    <Reference Include="Mapster.Core, Version=1.2.0.0, Culture=neutral, PublicKeyToken=e64997d676a9c1d3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mapster.Core.1.2.0\lib\net45\Mapster.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -54,8 +60,14 @@
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\TaskRepository.cs" />
+    <Compile Include="Utilities\IMapper.cs" />
+    <Compile Include="Utilities\MapsterMapper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ToDoApp.Business\ToDoApp.Business.csproj">
+      <Project>{4cfbfeb9-5d28-4b0c-b6c6-a616bd24ba66}</Project>
+      <Name>ToDoApp.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ToDoApp.Database\ToDoApp.Database.csproj">
       <Project>{75f4ebf2-9eab-4899-9772-0a8bd5ff605b}</Project>
       <Name>ToDoApp.Database</Name>
@@ -68,6 +80,7 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

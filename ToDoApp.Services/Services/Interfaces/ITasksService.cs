@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ToDoApp.Services.Models.Interfaces;
+﻿using System.Collections.Generic;
+using ToDoApp.Business.Models;
 
 namespace ToDoApp.Services.Services.Interfaces
 {
     /// todo: I can use genetic interface with CRUD methods for different T classes
     public interface ITasksService
     {
-        void CreateTask(ITaskModel taskModel);
+        void CreateTask(TaskDto taskModel);
 
-        void UpdateTask(ITaskModel taskModel);
+        void UpdateTask(TaskDto taskModel);
 
-        IEnumerable<ITaskModel> GetAllTasks();
+        IEnumerable<TaskDto> GetAllTasks();
 
-        ITaskModel GetTask(int id);
+        TaskDto GetTask(int id);
 
         void DeleteTask(int id);
     }

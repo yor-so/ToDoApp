@@ -41,13 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Interfaces\ITaskModel.cs" />
-    <Compile Include="Models\TaskModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Interfaces\ITasksService.cs" />
     <Compile Include="Services\TasksService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ToDoApp.Business\ToDoApp.Business.csproj">
+      <Project>{4cfbfeb9-5d28-4b0c-b6c6-a616bd24ba66}</Project>
+      <Name>ToDoApp.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ToDoApp.Repository\ToDoApp.Repository.csproj">
       <Project>{db13026d-a871-48c7-83ef-9885916fe386}</Project>
       <Name>ToDoApp.Repository</Name>

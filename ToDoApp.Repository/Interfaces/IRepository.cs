@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
+using ToDoApp.Business.Models;
 using ToDoApp.Database;
 
 namespace ToDoApp.Repository.Interfaces
 {
     public interface ITaskRepository
     {
-        void CreateTask(Task task);
+        void CreateTask(TaskDto task);
 
-        void UpdateTask(Task task);
+        void UpdateTask(TaskDto task);
 
-        IEnumerable<Task> GetTasks();
+        IEnumerable<TaskDto> GetTasks();
 
-        void DeleteTask(Task task);
+        void DeleteTask(TaskDto task);
     }
 }
