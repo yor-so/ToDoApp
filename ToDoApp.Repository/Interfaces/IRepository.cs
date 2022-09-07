@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
+﻿using System.Collections.Generic;
+using ToDoApp.Database;
 
 namespace ToDoApp.Repository.Interfaces
 {
-    public interface IRepository<T>
+    public interface ITaskRepository
     {
-        T Add(T entity);
-        T Update(T entity);
-        T Get(int id);
-        IEnumerable<T> GetAll();
-        IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
-        void SaveChanges();
+        void CreateTask(Task task);
+
+        void UpdateTask(Task task);
+
+        IEnumerable<Task> GetTasks();
+
+        void DeleteTask(Task task);
     }
 }
