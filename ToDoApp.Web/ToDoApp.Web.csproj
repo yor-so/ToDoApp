@@ -204,6 +204,16 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Tasks\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ToDoApp.Business\ToDoApp.Business.csproj">
+      <Project>{4cfbfeb9-5d28-4b0c-b6c6-a616bd24ba66}</Project>
+      <Name>ToDoApp.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ToDoApp.Services\ToDoApp.Services.csproj">
+      <Project>{bd507eec-404f-4e9d-b75c-30a3cc57f3e4}</Project>
+      <Name>ToDoApp.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

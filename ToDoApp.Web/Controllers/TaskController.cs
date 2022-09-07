@@ -1,36 +1,52 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.Http;
+using ToDoApp.Business.Models;
+using ToDoApp.Services.Services.Interfaces;
 
 namespace ToDoApp.Web.Controllers
 {
     public class TaskController : ApiController
     {
-        // GET: api/Task
-        public IEnumerable<string> Get()
+        private ITasksService _tasksService;
+
+        public TaskController(ITasksService tasksService)
         {
-            return new string[] { "value1", "value2" };
+            _tasksService = tasksService;
+        }
+
+        // GET: api/Task
+        public IEnumerable<TaskDto> Get()
+        {
+            IEnumerable<TaskDto> tasks = _tasksService.GetAllTasks();
+
+            return tasks;
         }
 
         // GET: api/Task/5
-        public string Get(int id)
+        public TaskDto Get(int id)
         {
-            return "value";
+            TaskDto taskDto = _tasksService.GetTask(id);
+
+            return taskDto;
         }
 
         // POST: api/Task
-        public void Post([FromBody]string value)
+        public void Post(TaskDto taskDto)
         {
+            _tasksService.CreateTask(taskDto);
         }
 
         // PUT: api/Task/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]TaskDto taskDto)
         {
+            _tasksService.UpdateTask(taskDto);
         }
 
         // DELETE: api/Task/5
         public void Delete(int id)
         {
+            _tasksService.DeleteTask(id);
         }
     }
 }
