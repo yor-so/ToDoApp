@@ -8,20 +8,26 @@ using ToDoApp.Repository.Utilities;
 
 namespace ToDoApp.Repository.Repositories
 {
-    public abstract class TaskRepository : ITaskRepository
+    public class TaskRepository : ITaskRepository
     {
+        // todo: figure out how to create an interface for ToDoAppContext
         private readonly ToDoAppContext _context;
-        private readonly IMapper<Task, TaskDto> _mapper;
+        private readonly IMapper<Task, TaskDto> _taskMapper;
+        private readonly IMapper<TaskDto, Task> _taskDtoMapper;
 
-        protected TaskRepository(ToDoAppContext context, IMapper<Task, TaskDto> mapper)
+        // todo: figure out how to create an interface for ToDoAppContext
+        public TaskRepository(
+            IMapper<Task, TaskDto> taskMapper,
+            IMapper<TaskDto, Task> taskDtomapper)
         {
-            _context = context;
-            _mapper = mapper;
+            _context = new ToDoAppContext();
+            _taskMapper = taskMapper;
+            _taskDtoMapper = taskDtomapper;
         }
 
         public void CreateTask(TaskDto taskDto)
         {
-            Task taskToCreate = _mapper.MapToType(taskDto);
+            Task taskToCreate = _taskMapper.MapToType(taskDto);
             
             _ = _context.Tasks.Add(taskToCreate);
             _ = _context.SaveChanges();
@@ -29,7 +35,7 @@ namespace ToDoApp.Repository.Repositories
 
         public void UpdateTask(TaskDto taskDto)
         {
-            Task task = _mapper.MapToType(taskDto);
+            Task task = _taskMapper.MapToType(taskDto);
                 
             Task taskToUpdate = _context.Tasks.SingleOrDefault(t => t.Id == taskDto.Id);
             taskToUpdate = task;
@@ -37,10 +43,23 @@ namespace ToDoApp.Repository.Repositories
             _ = _context.SaveChanges();
         }
 
-        public IEnumerable<TaskDto> GetTasks()
+        public TaskDto GetTask(int id)
+        {
+            Task task = _context.Tasks.SingleOrDefault(t => t.Id == id);
+            TaskDto taskDto = _taskDtoMapper.MapToType(task);
+            return taskDto;
+        }
+
+        public List<TaskDto> GetAllTasks()
         {
             IEnumerable<Task> tasks = _context.Tasks;
-            IEnumerable<TaskDto> tasksDto = _mapper.Adapt<IEnumerable<TaskDto>>();
+            var tasksDto = new List<TaskDto>();
+
+            foreach (Task task in tasks)
+            {
+                TaskDto taskDto = _taskDtoMapper.MapToType(task);
+                tasksDto.Add(taskDto);
+            }
             
             return tasksDto;
         }
@@ -48,7 +67,7 @@ namespace ToDoApp.Repository.Repositories
         public void DeleteTask(TaskDto taskDto)
         {
             // todo: soft delete tasks by updating a status column
-            Task task = _mapper.MapToType(taskDto);
+            Task task = _taskMapper.MapToType(taskDto);
             Task taskToDelete = _context.Tasks.SingleOrDefault(t => t.Id == task.Id);
             
             _ = _context.Tasks.Remove(taskToDelete);

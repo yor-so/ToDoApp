@@ -15,24 +15,24 @@ namespace ToDoApp.Services.Services
             _taskRepository = taskRepository;
         }
 
-        public void CreateTask(TaskDto taskModel)
+        public void CreateTask(TaskDto taskDto)
         {
-            
+            _taskRepository.CreateTask(taskDto);
         }
 
-        public void UpdateTask(TaskDto taskModel)
+        public void UpdateTask(TaskDto taskDto)
         {
-            throw new NotImplementedException();
+            _taskRepository.UpdateTask(taskDto);
         }
 
         public IEnumerable<TaskDto> GetAllTasks()
         {
-            throw new NotImplementedException();
+            return _taskRepository.GetAllTasks();
         }
 
         public TaskDto GetTask(int id)
         {
-            throw new NotImplementedException();
+            return _taskRepository.GetTask(id);
         }
 
         public void DeleteTask(int id)

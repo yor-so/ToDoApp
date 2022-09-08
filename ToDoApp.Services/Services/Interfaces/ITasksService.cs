@@ -3,7 +3,7 @@ using ToDoApp.Business.Models;
 
 namespace ToDoApp.Services.Services.Interfaces
 {
-    /// todo: I can use genetic interface with CRUD methods for different T classes
+    /// todo: I can use generic interface with CRUD methods for different T classes
     public interface ITasksService
     {
         void CreateTask(TaskDto taskModel);

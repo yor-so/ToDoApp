@@ -10,7 +10,9 @@ namespace ToDoApp.Repository.Interfaces
 
         void UpdateTask(TaskDto task);
 
-        IEnumerable<TaskDto> GetTasks();
+        TaskDto GetTask(int id);
+
+        List<TaskDto> GetAllTasks();
 
         void DeleteTask(TaskDto task);
     }
