@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Mapster;
 using ToDoApp.Business.Models;
 using ToDoApp.Database;
 using ToDoApp.Repository.Interfaces;
@@ -18,11 +17,11 @@ namespace ToDoApp.Repository.Repositories
         // todo: figure out how to create an interface for ToDoAppContext
         public TaskRepository(
             IMapper<Task, TaskDto> taskMapper,
-            IMapper<TaskDto, Task> taskDtomapper)
+            IMapper<TaskDto, Task> taskDtoMapper)
         {
             _context = new ToDoAppContext();
             _taskMapper = taskMapper;
-            _taskDtoMapper = taskDtomapper;
+            _taskDtoMapper = taskDtoMapper;
         }
 
         public void CreateTask(TaskDto taskDto)
