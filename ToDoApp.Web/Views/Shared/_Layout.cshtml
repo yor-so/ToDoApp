@@ -37,7 +37,14 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    <script data-main="assets/js/libs/require/requireConfig.js" src="~/assets/js/libs/require/require.js"></script>
+    <script data-main="assets/js/requireConfig.js" src="~/assets/js/require.js"></script>
     @RenderSection("scripts", required: false)
+<script>
+    $(document).ready(function () {
+        require(['app'], function (app) {
+            app.start();
+        });
+    });
+    </script>
 </body>
 </html>

@@ -4378,8 +4378,8 @@
     <None Include="assets\js\libs\kendo-ui\vsdoc\kendo.mobile.min.intellisense.js" />
     <None Include="assets\js\libs\kendo-ui\vsdoc\kendo.web-vsdoc.js" />
     <None Include="assets\js\libs\kendo-ui\vsdoc\kendo.web.min.intellisense.js" />
-    <Content Include="assets\js\libs\require\require.js" />
-    <Content Include="assets\js\libs\require\requireConfig.js" />
+    <Content Include="assets\js\require.js" />
+    <Content Include="assets\js\requireConfig.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -5774,8 +5774,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="assets\js\views\home\app.js" />
-    <Content Include="assets\js\views\home\router.js" />
+    <Content Include="assets\js\app.js" />
+    <Content Include="assets\js\router.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -5810,6 +5810,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="assets\js\libs\require\" />
     <Folder Include="Views\Tasks\" />
   </ItemGroup>
   <ItemGroup>
