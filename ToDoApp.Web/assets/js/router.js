@@ -2,12 +2,16 @@
 	function start() {
 		var router = new kendo.Router();
 
-		router.route("/", function () {
+		router.route("/task/create", function () {
 			layout.showIn("#content", index);
 		});
 
-		router.route("/detail", function () {
+		router.route("/task/edit/:id", function () {
 			layout.showIn("#content", detail);
+		});
+
+		$(function () {
+			router.start();
 		});
 	}
 

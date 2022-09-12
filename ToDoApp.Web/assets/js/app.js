@@ -37,7 +37,9 @@
 				{ field: 'Title', title: 'Title' },
 				{ field: 'EstimatedHours', title: 'Estimated Hours' },
 				{ field: 'AppUserDto.FullName', title: 'Created By' },
-			]
+			],
+			height: 400,
+			scrollable: true,
 		});
 	}
 
