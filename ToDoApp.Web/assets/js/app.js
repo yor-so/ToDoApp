@@ -1,20 +1,50 @@
 ﻿define([], function () {
-	function startUsersDropdown() {
+
+	const originUrl = new URL(location.href).origin;
+
+	/**
+	 * 
+	 * */
+	function startAllUsersDropdown() {
 		$('#users-dropdown').kendoDropDownList({
 			index: 0,
-			dataTextField: "FullName",
-			dataValueField: "Id",
+			dataTextField: 'FullName',
+			dataValueField: 'Id',
 			dataSource: {
-				type: "json",
+				type: 'json',
 				transport: {
-					read: "https://localhost:44397/api/user/",
+					read: `${originUrl}/api/user/`,
 				}
 			},
 		});
 	}
 
+	/**
+	 * 
+	 * */
+	function startAllTasksGrid() {
+		$('#all-tasks').kendoGrid({
+			dataSource: {
+				type: 'json',
+				transport: {
+					read: `${originUrl}/api/task/`
+				},
+				//schema: {
+				//	data: data
+				//}
+			},
+			columns: [
+				{ field: 'IsCompleted', title: 'Is completed?' },
+				{ field: 'Title', title: 'Title' },
+				{ field: 'EstimatedHours', title: 'Estimated Hours' },
+				{ field: 'AppUserDto.FullName', title: 'Created By' },
+			]
+		});
+	}
+
 	function start() {
-		startUsersDropdown();
+		startAllUsersDropdown();
+		startAllTasksGrid();
 	}
 
 	return {

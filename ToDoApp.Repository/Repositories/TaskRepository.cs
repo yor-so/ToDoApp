@@ -13,15 +13,18 @@ namespace ToDoApp.Repository.Repositories
         private readonly ToDoAppContext _context;
         private readonly IMapper<Task, TaskDto> _taskMapper;
         private readonly IMapper<TaskDto, Task> _taskDtoMapper;
+        private readonly IMapper<AppUserDto, AppUser> _appUserDtoMapper;
 
         // todo: figure out how to create an interface for ToDoAppContext
         public TaskRepository(
             IMapper<Task, TaskDto> taskMapper,
-            IMapper<TaskDto, Task> taskDtoMapper)
+            IMapper<TaskDto, Task> taskDtoMapper,
+            IMapper<AppUserDto, AppUser> appUserDtoMapper)
         {
             _context = new ToDoAppContext();
             _taskMapper = taskMapper;
             _taskDtoMapper = taskDtoMapper;
+            _appUserDtoMapper = appUserDtoMapper;
         }
 
         public void Create(TaskDto taskDto)
@@ -61,6 +64,7 @@ namespace ToDoApp.Repository.Repositories
             foreach (Task task in tasks)
             {
                 taskDto = _taskDtoMapper.MapToType(task);
+                taskDto.AppUserDto = _appUserDtoMapper.MapToType(task.AppUser);
                 tasksDtos.Add(taskDto);
             }
             

@@ -11,5 +11,7 @@
         public int EstimatedHours { get; set; }
 
         public int AppUserId { get; set; }
+
+        public AppUserDto AppUserDto { get; set; }
     }
 }
