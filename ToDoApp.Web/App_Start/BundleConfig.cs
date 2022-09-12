@@ -8,13 +8,11 @@ namespace ToDoApp.Web
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery")
+            bundles.Add(new ScriptBundle("~/bundles/kendoJs")
                 .Include(
-                        "~/Scripts/jquery-{version}.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval")
-                .Include(
-                        "~/Scripts/jquery.validate*"));
+                        "~/assets/js/libs/kendo-ui/js/jquery.min.js",
+                        "~/assets/js/libs/kendo-ui/js/kendo.all.min.js"
+                        ));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
@@ -30,6 +28,9 @@ namespace ToDoApp.Web
                 .Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/kendoCss")
+                .Include("~/assets/js/libs/kendo-ui/styles/kendo.default-main.min.css"));
         }
     }
 }

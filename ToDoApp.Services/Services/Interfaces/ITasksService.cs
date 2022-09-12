@@ -6,13 +6,13 @@ namespace ToDoApp.Services.Services.Interfaces
     /// todo: I can use generic interface with CRUD methods for different T classes
     public interface ITasksService
     {
-        void CreateTask(TaskDto taskModel);
+        void CreateTask(TaskDto taskDto);
 
-        void UpdateTask(TaskDto taskModel);
+        TaskDto GetTask(int id);
 
         IEnumerable<TaskDto> GetAllTasks();
 
-        TaskDto GetTask(int id);
+        void UpdateTask(TaskDto taskDto);
 
         void DeleteTask(int id);
     }

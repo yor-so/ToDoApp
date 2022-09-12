@@ -1,6 +1,6 @@
 ﻿namespace ToDoApp.Business.Models
 {
-    public class UserAppDto
+    public class AppUserDto
     {
         public int Id { get; set; }
 

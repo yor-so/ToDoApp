@@ -7,7 +7,7 @@ namespace ToDoApp.Web.Controllers
 {
     public class TaskController : ApiController
     {
-        private ITasksService _tasksService;
+        private readonly ITasksService _tasksService;
 
         public TaskController(ITasksService tasksService)
         {

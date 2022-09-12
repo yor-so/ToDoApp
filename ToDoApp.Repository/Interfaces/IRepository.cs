@@ -4,16 +4,16 @@ using ToDoApp.Database;
 
 namespace ToDoApp.Repository.Interfaces
 {
-    public interface ITaskRepository
+    public interface IRepository<T>
     {
-        void CreateTask(TaskDto task);
+        void Create(T task);
 
-        void UpdateTask(TaskDto task);
+        void Update(T task);
 
-        TaskDto GetTask(int id);
+        T Get(int id);
 
-        List<TaskDto> GetAllTasks();
+        List<T> GetAll();
 
-        void DeleteTask(TaskDto task);
+        void Delete(int id);
     }
 }

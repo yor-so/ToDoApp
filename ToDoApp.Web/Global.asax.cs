@@ -3,9 +3,10 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using SimpleInjector;
-using SimpleInjector.Lifestyles;          // for web api
-using SimpleInjector.Integration.WebApi;  // for web api
+using SimpleInjector.Lifestyles;
+using SimpleInjector.Integration.WebApi;
 using ToDoApp.Business.Models;
+using ToDoApp.Database;
 using ToDoApp.Repository.Interfaces;
 using ToDoApp.Repository.Repositories;
 using ToDoApp.Repository.Utilities;
@@ -29,15 +30,17 @@ namespace ToDoApp.Web
             webApiContainer.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
 
             // registering web api dependencies
+            webApiContainer.Register<IUsersService, UsersService>(Lifestyle.Scoped);
             webApiContainer.Register<ITasksService, TasksService>(Lifestyle.Scoped);
-            webApiContainer.Register<ITaskRepository, TaskRepository>(Lifestyle.Scoped);
-
-            webApiContainer.Register<IMapper<Database.Task, TaskDto>, MapsterMapper<Database.Task, TaskDto>>(Lifestyle.Scoped);
-            webApiContainer.Register<IMapper<TaskDto, Database.Task>, MapsterMapper<TaskDto, Database.Task>>(Lifestyle.Scoped);
+            webApiContainer.Register<IRepository<AppUserDto>, AppUserRepository>(Lifestyle.Scoped);
+            webApiContainer.Register<IRepository<TaskDto>, TaskRepository>(Lifestyle.Scoped);
+            webApiContainer.Register<IMapper<Task, TaskDto>, MapsterMapper<Task, TaskDto>>(Lifestyle.Scoped);
+            webApiContainer.Register<IMapper<TaskDto, Task>, MapsterMapper<TaskDto, Task>>(Lifestyle.Scoped);
+            webApiContainer.Register<IMapper<AppUser, AppUserDto>, MapsterMapper<AppUser, AppUserDto>>(Lifestyle.Scoped);
+            webApiContainer.Register<IMapper<AppUserDto, AppUser>, MapsterMapper<AppUserDto, AppUser>>(Lifestyle.Scoped);
 
             webApiContainer.RegisterWebApiControllers(GlobalConfiguration.Configuration);
             webApiContainer.Verify();
-
             GlobalConfiguration.Configuration.DependencyResolver =
                 new SimpleInjectorWebApiDependencyResolver(webApiContainer);
         }

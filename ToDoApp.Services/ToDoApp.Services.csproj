@@ -43,7 +43,9 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Interfaces\ITasksService.cs" />
+    <Compile Include="Services\Interfaces\IUsersService.cs" />
     <Compile Include="Services\TasksService.cs" />
+    <Compile Include="Services\UsersService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ToDoApp.Business\ToDoApp.Business.csproj">

@@ -8,31 +8,31 @@ namespace ToDoApp.Services.Services
 {
     public class TasksService : ITasksService
     {
-        private ITaskRepository _taskRepository;
+        private readonly IRepository<TaskDto> _taskRepository;
 
-        public TasksService(ITaskRepository taskRepository)
+        public TasksService(IRepository<TaskDto> taskRepository)
         {
             _taskRepository = taskRepository;
         }
 
         public void CreateTask(TaskDto taskDto)
         {
-            _taskRepository.CreateTask(taskDto);
+            _taskRepository.Create(taskDto);
         }
 
         public void UpdateTask(TaskDto taskDto)
         {
-            _taskRepository.UpdateTask(taskDto);
+            _taskRepository.Update(taskDto);
         }
 
         public IEnumerable<TaskDto> GetAllTasks()
         {
-            return _taskRepository.GetAllTasks();
+            return _taskRepository.GetAll();
         }
 
         public TaskDto GetTask(int id)
         {
-            return _taskRepository.GetTask(id);
+            return _taskRepository.Get(id);
         }
 
         public void DeleteTask(int id)

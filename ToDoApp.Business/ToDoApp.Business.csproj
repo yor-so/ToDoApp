@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTOs\UserAppDto.cs" />
+    <Compile Include="DTOs\AppUserDto.cs" />
     <Compile Include="DTOs\TaskDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
