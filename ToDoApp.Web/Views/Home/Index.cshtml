@@ -12,41 +12,39 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                @*<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>*@
-                @Html.ActionLink("Task Manager", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a href="#/task" class="navbar-brand" aria-label="Go to all tasks">Task Manager</a>
             </div>
-            @*<div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    </ul>
-                </div>*@
         </div>
     </div>
     <div class="container body-content">
         <div class="jumbotron">
             <h2>Task manager by: </h2>
             <input id="users-dropdown">
+            <a href="#/task/create" class="btn btn-primary">Create Task</a>
         </div>
-        <div id="all-tasks-view" class="row">
-            <h2>All Tasks</h2>
-            <div id="all-tasks"></div>
-            <hr />
-        </div>
-        <div id="create-task-view" class="row">
-            <h2>Create Task</h2>
-            <form id="create-task"></form>
-            <hr />
-        </div>
-        <div id="edit-class-view" class="row">
-            <h2>Edit Task</h2>
-            <hr />
-        </div>
+
+        <script id="all-tasks-template" type="text/x-kendo-template">
+            <div id="all-tasks-view" class="row">
+                <h2>All Tasks</h2>
+                <div id="all-tasks"></div>
+            </div>
+        </script>
+        <script id="create-task-template" type="text/x-kendo-template">
+            <div id="create-task-view" class="row">
+                <h2>Create Task</h2>
+                <form id="create-task"></form>
+            </div>
+        </script>
+        <script id="edit-tasks-template" type="text/x-kendo-template">
+            <div id="edit-task-view" class="row">
+                <h2>Edit Task</h2>
+                <form id="edit-task"></form>
+            </div>
+        </script>
+
+        <div id="app"></div>
+        <hr/>
+
         <footer>
             <p>&copy; @DateTime.Now.Year. All your base are belong to us.</p>
         </footer>
@@ -57,13 +55,13 @@
     @Scripts.Render("~/bundles/bootstrap")
     <script data-main="assets/js/requireConfig.js" src="~/assets/js/require.js"></script>
     @*<link href="https://kendo.cdn.telerik.com/2022.2.802/styles/kendo.default-main.min.css" rel="stylesheet" />
-    <script src="https://kendo.cdn.telerik.com/2022.2.802/js/kendo.all.min.js"></script>*@
-<script>
-    $(document).ready(function () {
-        require(['app'], function (app) {
-            app.start();
+        <script src="https://kendo.cdn.telerik.com/2022.2.802/js/kendo.all.min.js"></script>*@
+    <script>
+        $(document).ready(function () {
+            require(['app'], function (app) {
+                app.start();
+            });
         });
-    });
     </script>
 </body>
 </html>
