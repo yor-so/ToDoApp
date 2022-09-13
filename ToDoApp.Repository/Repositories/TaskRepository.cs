@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using ToDoApp.Business.Models;
 using ToDoApp.Database;
@@ -30,7 +31,7 @@ namespace ToDoApp.Repository.Repositories
         public void Create(TaskDto taskDto)
         {
             Task taskToCreate = _taskMapper.MapToType(taskDto);
-            
+
             _ = _context.Tasks.Add(taskToCreate);
             _ = _context.SaveChanges();
         }
@@ -43,6 +44,7 @@ namespace ToDoApp.Repository.Repositories
             if (taskToUpdate != null)
             {
                 taskToUpdate = task;
+                _context.Set<Task>().AddOrUpdate(taskToUpdate);
                 _ = _context.SaveChanges();
             }
         }
