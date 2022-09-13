@@ -92,18 +92,13 @@
 						return typeof value === 'number' && value >= 1 && value <= 100;
 					},
 				},
-			}],
-			submit: function (ev) {
-				ev.model.AppUserId = $('#users-dropdown').data('kendoDropDownList').value();
-
-				$.ajax({
-					type: 'POST',
-					url: '/api/task',
-					data: ev.model,
-					success: function () {
-						var form = $("#create-task").getKendoForm();
-						form.clear();
-					}
+				}],
+			buttonsTemplate: "<button>Submit</button>",
+			submit: function (event) {
+				event.preventDefault();
+				event.model.AppUserId = $('#users-dropdown').data('kendoDropDownList').value();
+				$.post('/api/task', event.model, function () {
+					alert('Task created successfully.');
 				});
 			}
 		})
@@ -116,11 +111,8 @@
 					Id: data.Id,
 					Title: data.Title,
 					EstimatedHours: data.EstimatedHours,
+					IsCompleted: data.IsCompleted,
 					AppUserId: data.AppUserId,
-					//AppUserDto: {
-					//	Id: data.AppUserDto.Id,
-					//	FullName: data.AppUserDto.FullName,
-					//}
 				},
 				items: [
 					{
@@ -163,15 +155,16 @@
 						label: 'Is Completed?',
 						editor: 'Switch',
 					}],
-				submit: function (ev) {
+				buttonsTemplate: "<button>Submit</button>",
+				submit: function (event) {
+					event.preventDefault();
 					$.ajax({
 						type: 'PUT',
 						url: `/api/task/${id}`,
-						data: ev.model,
+						data: event.model,
 						success: function () {
-							var form = $("#create-task").getKendoForm();
-							form.clear();
-						}
+							alert("Task updated successfully.");
+						},
 					});
 				}
 			})
