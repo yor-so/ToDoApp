@@ -1,4 +1,4 @@
-﻿define([], function () {
+﻿define(['widgetsLoader'], function (widgetsLoader) {
 
 	var router = new kendo.Router();
 	var allTasksLayout = new kendo.Layout('<div id="all-tasks-view" class="row"><h2>All Tasks</h2><div id="all-tasks"></div></div>');
@@ -10,28 +10,32 @@
 	}
 
 	function setRoutes() {
-		router.route("/tasks", function () {
-			/*layout.showIn("#content", index);*/
+		const app = $('#app');
+
+		router.route('/task', function () {
+			app.html('');
+			allTasksLayout.render(app);
+			widgetsLoader.startAllTasksGrid();
 		});
 
-		router.route("/task/create", function () {
-			/*layout.showIn("#content", index);*/
+		router.route('/task/create', function () {
+			app.html('');
+			createTaskLayout.render(app);
+			widgetsLoader.startCreateTaskForm();
 		});
 
-		router.route("/task/edit/:id", function () {
-			/*layout.showIn("#content", detail);*/
+		router.route('/task/edit/:id', function (id) {
+			app.html('');
+			editTaskLayout.render(app);
+			widgetsLoader.startEditTaskForm(id);
 		});
 	}
 
-	function startRoutes() {
-		router.bind("init", function () {
-			allTasksLayout.render($("#app"));
-		});
-	}
 
 	$(function () {
 		setRoutes();
 		router.start();
+		router.navigate('/task')
 	});
 
 

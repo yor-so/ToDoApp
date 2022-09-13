@@ -4404,6 +4404,7 @@
     <None Include="assets\js\libs\kendo-ui\vsdoc\kendo.mobile.min.intellisense.js" />
     <None Include="assets\js\libs\kendo-ui\vsdoc\kendo.web-vsdoc.js" />
     <None Include="assets\js\libs\kendo-ui\vsdoc\kendo.web.min.intellisense.js" />
+    <Content Include="assets\js\widgetsLoader.js" />
     <Content Include="assets\js\require.js" />
     <Content Include="assets\js\requireConfig.js" />
     <Content Include="Content\bootstrap-theme.css" />
