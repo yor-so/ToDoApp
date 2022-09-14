@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 using ToDoApp.Business.Models;
 using ToDoApp.Services.Services.Interfaces;
@@ -31,15 +33,28 @@ namespace ToDoApp.Web.Controllers
         }
 
         // POST: api/Task
-        public void Post(TaskDto taskDto)
+        public HttpResponseMessage Post(TaskDto taskDto)
         {
-            _tasksService.CreateTask(taskDto);
+            if (ModelState.IsValid)
+            {
+                _tasksService.CreateTask(taskDto);
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            }
+
+            return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+
         }
 
         // PUT: api/Task/5
-        public void Put(int id, [FromBody]TaskDto taskDto)
+        public HttpResponseMessage Put(int id, [FromBody]TaskDto taskDto)
         {
-            _tasksService.UpdateTask(taskDto);
+            if (ModelState.IsValid)
+            {
+                _tasksService.UpdateTask(taskDto);
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            }
+
+            return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
         }
 
         // DELETE: api/Task/5
