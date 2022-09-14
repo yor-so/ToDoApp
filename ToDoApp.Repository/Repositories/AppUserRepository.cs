@@ -1,30 +1,27 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using MapsterMapper;
 using ToDoApp.Business.Models;
 using ToDoApp.Database;
 using ToDoApp.Repository.Interfaces;
-using ToDoApp.Repository.Utilities;
 
 namespace ToDoApp.Repository.Repositories
 {
     public class AppUserRepository : IRepository<AppUserDto>
     {
         private readonly ToDoAppContext _context;
-        private readonly IMapper<AppUser, AppUserDto> _appUserMapper;
-        private readonly IMapper<AppUserDto, AppUser> _appUserDtoMapper;
+        private readonly IMapper _mapper;
 
-        public AppUserRepository(
-            IMapper<AppUser, AppUserDto> appUserMapper,
-            IMapper<AppUserDto, AppUser> appUserDtoMapper)
+
+        public AppUserRepository(IMapper mapper)
         {
             _context = new ToDoAppContext();
-            _appUserMapper = appUserMapper;
-            _appUserDtoMapper = appUserDtoMapper;
+            _mapper = mapper;
         }
 
         public void Create(AppUserDto appUserDto)
         {
-            AppUser appUser = _appUserMapper.MapToType(appUserDto);
+            AppUser appUser = _mapper.Map<AppUser>(appUserDto);
 
             _ = _context.AppUsers.Add(appUser);
             _ = _context.SaveChanges();
@@ -32,7 +29,7 @@ namespace ToDoApp.Repository.Repositories
 
         public void Update(AppUserDto appUserDto)
         {
-            AppUser appUser = _appUserMapper.MapToType(appUserDto);
+            AppUser appUser = _mapper.Map<AppUser>(appUserDto);
             AppUser appUserToUpdate = _context.AppUsers.Single(a => a.Id == appUserDto.Id);
 
             if (appUserToUpdate != null)
@@ -45,7 +42,7 @@ namespace ToDoApp.Repository.Repositories
         public AppUserDto Get(int id)
         {
             AppUser appUser = _context.AppUsers.SingleOrDefault(a => a.Id == id);
-            AppUserDto appUserDto = _appUserDtoMapper.MapToType(appUser);
+            AppUserDto appUserDto = _mapper.Map<AppUserDto>(appUser);
 
             return appUserDto;
         }
@@ -58,7 +55,7 @@ namespace ToDoApp.Repository.Repositories
 
             foreach (AppUser appUser in appUsers)
             {
-                appUserDto = _appUserDtoMapper.MapToType(appUser);
+                appUserDto = _mapper.Map<AppUserDto>(appUser);
                 appUsersDtos.Add(appUserDto);
             }
 

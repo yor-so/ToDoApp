@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using MapsterMapper;
 using ToDoApp.Business.Models;
 using ToDoApp.Database;
 using ToDoApp.Repository.Interfaces;
-using ToDoApp.Repository.Utilities;
 
 namespace ToDoApp.Repository.Repositories
 {
@@ -12,25 +12,18 @@ namespace ToDoApp.Repository.Repositories
     {
         // todo: figure out how to create an interface for ToDoAppContext
         private readonly ToDoAppContext _context;
-        private readonly IMapper<Task, TaskDto> _taskMapper;
-        private readonly IMapper<TaskDto, Task> _taskDtoMapper;
-        private readonly IMapper<AppUserDto, AppUser> _appUserDtoMapper;
+        private readonly IMapper _mapper;
 
         // todo: figure out how to create an interface for ToDoAppContext
-        public TaskRepository(
-            IMapper<Task, TaskDto> taskMapper,
-            IMapper<TaskDto, Task> taskDtoMapper,
-            IMapper<AppUserDto, AppUser> appUserDtoMapper)
+        public TaskRepository(IMapper mapper)
         {
             _context = new ToDoAppContext();
-            _taskMapper = taskMapper;
-            _taskDtoMapper = taskDtoMapper;
-            _appUserDtoMapper = appUserDtoMapper;
+            _mapper = mapper;
         }
 
         public void Create(TaskDto taskDto)
         {
-            Task taskToCreate = _taskMapper.MapToType(taskDto);
+            Task taskToCreate = _mapper.Map<Task>(taskDto);
 
             _ = _context.Tasks.Add(taskToCreate);
             _ = _context.SaveChanges();
@@ -38,7 +31,7 @@ namespace ToDoApp.Repository.Repositories
 
         public void Update(TaskDto taskDto)
         {
-            Task task = _taskMapper.MapToType(taskDto);
+            Task task = _mapper.Map<Task>(taskDto);
             Task taskToUpdate = _context.Tasks.Single(t => t.Id == taskDto.Id);
 
             if (taskToUpdate != null)
@@ -52,7 +45,7 @@ namespace ToDoApp.Repository.Repositories
         public TaskDto Get(int id)
         {
             Task task = _context.Tasks.SingleOrDefault(t => t.Id == id);
-            TaskDto taskDto = _taskDtoMapper.MapToType(task);
+            TaskDto taskDto = _mapper.Map<TaskDto>(task);
 
             return taskDto;
         }
@@ -65,8 +58,8 @@ namespace ToDoApp.Repository.Repositories
 
             foreach (Task task in tasks)
             {
-                taskDto = _taskDtoMapper.MapToType(task);
-                taskDto.AppUserDto = _appUserDtoMapper.MapToType(task.AppUser);
+                taskDto = _mapper.Map<TaskDto>(task);
+                taskDto.AppUserDto = _mapper.Map<AppUserDto>(task.AppUser);
                 tasksDtos.Add(taskDto);
             }
             
