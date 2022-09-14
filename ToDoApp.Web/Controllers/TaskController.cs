@@ -46,7 +46,7 @@ namespace ToDoApp.Web.Controllers
         }
 
         // PUT: api/Task/5
-        public HttpResponseMessage Put(int id, [FromBody]TaskDto taskDto)
+        public HttpResponseMessage Put([FromBody]TaskDto taskDto)
         {
             if (ModelState.IsValid)
             {

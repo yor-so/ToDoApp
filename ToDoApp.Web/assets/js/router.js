@@ -1,36 +1,63 @@
 ﻿define(['widgetsLoader'], function (widgetsLoader) {
-
 	var router = new kendo.Router();
-	var allTasksLayout = new kendo.Layout('<div id="all-tasks-view" class="row"><h2>All Tasks</h2><div id="all-tasks"></div></div>');
-	var createTaskLayout = new kendo.Layout('<div id="create-task-view" class="row"><h2>Create Task</h2><form id="create-task"></form></div>');
-	var editTaskLayout = new kendo.Layout('<div id="edit-task-view" class="row"><h2>Edit Task</h2><form id="edit-task"></form></div>');
 
-	function getRouter() {
-		return router;
-	}
+	var allTasksViewModel = kendo.observable({
+		title: 'All Tasks',
+		init: function () {
+			widgetsLoader.startAllTasksGrid();
+		},
+	})
+
+	var createTaskViewModel = kendo.observable({
+		title: 'Create Task',
+		init: function () {
+			widgetsLoader.startCreateTaskForm();
+		}
+	})
+
+	var editTaskViewModel = kendo.observable({
+		title: 'Edit Task',
+		init: function (id) {
+			widgetsLoader.startEditTaskForm(id);
+		}
+	})
 
 	function setRoutes() {
 		const app = $('#app');
+		var layout = new kendo.Layout('<div id="app-content"></div>');
+		layout.render(app);
+
 
 		router.route('/task', function () {
-			app.html('');
-			allTasksLayout.render(app);
-			widgetsLoader.startAllTasksGrid();
-		});
+			var allTaskKendoView = new kendo.View('all-tasks-template', {
+				model: allTasksViewModel,
+				init: allTasksViewModel.init.bind(allTasksViewModel),
+			})
 
+			layout.showIn('#app-content', allTaskKendoView);
+		});
+		
 		router.route('/task/create', function () {
-			app.html('');
-			createTaskLayout.render(app);
-			widgetsLoader.startCreateTaskForm();
+			var createTaskKendoView = new kendo.View('create-task-template', {
+				model: createTaskViewModel,
+				init: createTaskViewModel.init.bind(createTaskViewModel),
+			})
+
+			layout.showIn('#app-content', createTaskKendoView);
 		});
 
 		router.route('/task/edit/:id', function (id) {
-			app.html('');
-			editTaskLayout.render(app);
-			widgetsLoader.startEditTaskForm(id);
+			editTaskViewModel.set('Id', id);
+			var editTaskKendoView = new kendo.View('edit-tasks-template', {
+				model: editTaskViewModel,
+				init: function (event) {
+					editTaskViewModel.init(event.sender.model.Id);
+				},
+			})
+
+			layout.showIn('#app-content', editTaskKendoView);
 		});
 	}
-
 
 	$(function () {
 		setRoutes();
@@ -38,7 +65,9 @@
 		router.navigate('/task')
 	});
 
-
+	function getRouter() {
+		return router;
+	}
 
 	return {
 		getRouter,
