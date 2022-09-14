@@ -30,8 +30,8 @@
 				},
 			},
 			columns: [
-				{ title: 'Action', field: 'Id', template: '<a class="k-button k-button-md k-rounded-md k-button-solid k-button-solid-base" href=/\\#/task/edit/#=Id#>Edit</a>' },
-				{ field: 'IsCompleted', title: 'Is Completed?' },
+				{ field: 'Id', title: 'Action', template: '<a class="k-button k-button-md k-rounded-md k-button-solid k-button-solid-base" href=/\\#/task/edit/#=Id#>Edit</a>' },
+				{ field: 'IsCompleted', title: 'Is Completed?', template: "\#= IsCompleted ? 'Yes' : 'No' \#" },
 				{ field: 'Title', title: 'Title' },
 				{ field: 'EstimatedHours', title: 'Estimated Hours' },
 				{ field: 'AppUserDto.FullName', title: 'Created By' },

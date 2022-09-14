@@ -59,17 +59,13 @@
 		});
 	}
 
-	$(function () {
+	function start() {
 		setRoutes();
 		router.start();
 		router.navigate('/task')
-	});
-
-	function getRouter() {
-		return router;
 	}
 
 	return {
-		getRouter,
+		start
 	}
 });

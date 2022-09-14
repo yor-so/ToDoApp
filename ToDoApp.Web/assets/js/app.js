@@ -1,6 +1,7 @@
-﻿define(['widgetsLoader', 'router'], function (widgetsLoader) {
+﻿define(['widgetsLoader', 'router'], function (widgetsLoader, router) {
 
 	function start() {
+		router.start();
 		widgetsLoader.startAllUsersDropdown();
 	}
 
