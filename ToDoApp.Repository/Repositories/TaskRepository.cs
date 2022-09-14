@@ -10,11 +10,9 @@ namespace ToDoApp.Repository.Repositories
 {
     public class TaskRepository : IRepository<TaskDto>
     {
-        // todo: figure out how to create an interface for ToDoAppContext
         private readonly ToDoAppContext _context;
         private readonly IMapper _mapper;
 
-        // todo: figure out how to create an interface for ToDoAppContext
         public TaskRepository(IMapper mapper)
         {
             _context = new ToDoAppContext();
@@ -68,7 +66,6 @@ namespace ToDoApp.Repository.Repositories
 
         public void Delete(int id)
         {
-            // todo: soft delete tasks by updating a status column
             Task taskToDelete = _context.Tasks.Single(t => t.Id == id);
 
             if (taskToDelete != null)

@@ -27,7 +27,6 @@
 		var layout = new kendo.Layout('<div id="app-content"></div>');
 		layout.render(app);
 
-
 		router.route('/task', function () {
 			var allTaskKendoView = new kendo.View('all-tasks-template', {
 				model: allTasksViewModel,
